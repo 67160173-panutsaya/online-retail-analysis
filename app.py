@@ -13,10 +13,10 @@ country = st.number_input("Country Code")
 if st.button("Predict"):
 
     input_data = pd.DataFrame({
-        "Quantity":[quantity],
-        "UnitPrice":[unit_price],
-        "Country":[country]
-    })
+    "Quantity":[quantity],
+    "UnitPrice":[unit_price],
+    "Country":[country]
+})
 
     prediction = model.predict(input_data)
 
