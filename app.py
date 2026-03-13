@@ -1,30 +1,23 @@
 import streamlit as st
-import pandas as pd
 import joblib
-
-st.title("Online Retail Sales Prediction")
+import pandas as pd
 
 model = joblib.load("sales_model.pkl")
 
-st.header("Predict Product Quantity")
+st.title("Online Retail Sales Prediction")
 
-unit_price = st.number_input("Unit Price", 0.0, 1000.0)
-
-hour = st.slider("Hour",0,23)
-
-month = st.slider("Month",1,12)
-
-country = st.number_input("Country Code",0,50)
+quantity = st.number_input("Quantity")
+price = st.number_input("Unit Price")
+country = st.number_input("Country Code")
 
 if st.button("Predict"):
 
     input_data = pd.DataFrame({
-        "UnitPrice":[unit_price],
-        "Hour":[hour],
-        "Month":[month],
+        "Quantity":[quantity],
+        "UnitPrice":[price],
         "Country":[country]
     })
 
     prediction = model.predict(input_data)
 
-    st.success(f"Predicted Quantity: {prediction[0]}")
+    st.success(f"Predicted Sales: {prediction[0]}")
