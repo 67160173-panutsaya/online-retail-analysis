@@ -7,14 +7,14 @@ model = joblib.load("sales_model.pkl")
 st.title("Online Retail Sales Prediction")
 
 quantity = st.number_input("Quantity")
-price = st.number_input("Unit Price")
+unit_price = st.number_input("Unit Price")
 country = st.number_input("Country Code")
 
 if st.button("Predict"):
 
     input_data = pd.DataFrame({
         "Quantity":[quantity],
-        "UnitPrice":[price],
+        "UnitPrice":[unit_price],
         "Country":[country]
     })
 
